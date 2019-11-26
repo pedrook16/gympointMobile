@@ -16,6 +16,12 @@ export function* signIn({payload}) {
   }
 }
 
+// export function satId({payload}) {
+//   if (!payload) return;
+
+//   const {id} = payload.auth;
+// }
+
 export function signOut() {
   // history.push('/');
 }

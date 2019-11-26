@@ -1,14 +1,21 @@
 import React from 'react';
-import {View} from 'react-native';
+import {PersistGate} from 'redux-persist/integration/react';
+import {Provider} from 'react-redux';
 
 import App from './App';
 
 import './config/ReactotronConfig';
 
+import {store, persistor} from './store';
+
 export default function Index() {
   return (
     <>
-      <App />
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
+          <App />
+        </PersistGate>
+      </Provider>
     </>
   );
 }

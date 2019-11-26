@@ -1,13 +1,21 @@
 import React, {useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {Image} from 'react-native';
 
 import logo from '~/assets/logo.png';
 
 import {Container, Form, FormInput, SubmitButton} from './styles';
 
-export default function signIn() {
+import {signInRequest} from '~/store/modules/auth/actions';
+
+export default function SignIn() {
   const [value, setValue] = useState('');
-  function handleSubmit() {}
+  const dispach = useDispatch();
+  const loading = useSelector(state => state.auth.loading);
+
+  function handleSubmit() {
+    dispach(signInRequest(value));
+  }
 
   return (
     <Container>
@@ -23,7 +31,9 @@ export default function signIn() {
           value={value}
           onChangeText={setValue}
         />
-        <SubmitButton>Acessar</SubmitButton>
+        <SubmitButton loading={loading} onPress={handleSubmit}>
+          Acessar
+        </SubmitButton>
       </Form>
     </Container>
   );
