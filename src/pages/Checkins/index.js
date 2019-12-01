@@ -1,38 +1,52 @@
-import React, {useEffect, useState} from 'react';
-import { formatRelative, parseISO } from 'date-fns';
+import React, {useEffect, useState, useCallback} from 'react';
+import {formatRelative, parseISO} from 'date-fns';
 import pt from 'date-fns/locale/pt';
 import {FlatList} from 'react-native';
 import {useSelector} from 'react-redux';
 
 import api from '~/services/api';
 
-import {Container, ButtonNewCheckin} from './styles';
+import {Container, ButtonNewCheckin, Checkin, Index, Time} from './styles';
 
 export default function Dashboard() {
   const [checkin, setCheckin] = useState([]);
   const studentId = useSelector(state => state.auth.id);
 
-  useEffect(() => {
-    async function loadCheckin() {
-      const response = await api.get(`students/${studentId}/checkins`);
-      const data = response.data.map(check => ({
-        ...check,
-        formattedDate: formatRelative(
-          parseISO(check.createdAt), new Date(), { locale: pt}
-        )
-      }))
-      console.tron.log(data)
-    }
-    loadCheckin();
+  const loadCheckin = useCallback(async () => {
+    const response = await api.get(`students/${studentId}/checkins`);
+    const data = response.data.map(check => ({
+      ...check,
+      formattedDate: formatRelative(parseISO(check.createdAt), new Date(), {
+        locale: pt,
+      }),
+    }));
+    setCheckin(data);
   }, [studentId]);
 
-  async function handleNewCheckin() {
+  useEffect(() => {
+    loadCheckin();
+  }, [loadCheckin]);
 
+  async function handleNewCheckin() {
+    await api.post(`students/${studentId}/checkins`);
+    loadCheckin();
   }
 
   return (
     <Container>
-      <ButtonNewCheckin onPress={handleNewCheckin}>Novo check-in</ButtonNewCheckin>
+      <ButtonNewCheckin onPress={handleNewCheckin}>
+        Novo check-in
+      </ButtonNewCheckin>
+      <FlatList
+        data={checkin}
+        keyExtractor={item => item._id}
+        renderItem={({item, index}) => (
+          <Checkin>
+            <Index>Check-in #{index + 1}</Index>
+            <Time>{item.formattedDate}</Time>
+          </Checkin>
+        )}
+      />
     </Container>
   );
 }
