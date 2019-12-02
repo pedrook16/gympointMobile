@@ -33,7 +33,7 @@ export default (isSined = false) =>
               navigationOptions: {
                 tabBarLabel: 'Check-ins',
                 tabBarIcon: ({tintColor}) => (
-                  <Icon name="person-pin-circle" size={20} color={tintColor} />
+                  <Icon name="person-pin-circle" size={25} color={tintColor} />
                 ),
               },
             },
@@ -62,6 +62,9 @@ export default (isSined = false) =>
           {
             resetOnBlur: true,
             tabBarOptions: {
+              labelStyle: {
+                fontSize: 16,
+              },
               keyboardHidesTabBar: true,
               activeTintColor: '#ee4e62',
               inactiveTintColor: '#999',

@@ -40,6 +40,7 @@ export default function Dashboard() {
       <FlatList
         data={checkin}
         keyExtractor={item => item._id}
+        showsVerticalScrollIndicator={false}
         renderItem={({item, index}) => (
           <Checkin>
             <Index>Check-in #{index + 1}</Index>
