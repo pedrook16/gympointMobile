@@ -8,13 +8,17 @@ export const Container = styled.View`
   padding: 30px 30px;
 `;
 
+export const FlatListHelp = styled.FlatList`
+  margin-top: 20px;
+`;
+
 export const ButtonNewHelpOrder = styled(Button)``;
 
 export const HelpList = styled(RectButton)`
-  margin-top: 20px;
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 15px;
+  margin-bottom: 20px;
 `;
 
 export const HelpHeader = styled.View`

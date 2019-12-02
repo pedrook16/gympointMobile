@@ -16,7 +16,7 @@ import {
 
 export default function DetailHelpOrder({navigation: navigate}) {
   const detail = navigate.getParam('item');
-  console.tron.log(detail);
+
   return (
     <Container>
       <Box>

@@ -6,7 +6,14 @@ import {useSelector} from 'react-redux';
 
 import api from '~/services/api';
 
-import {Container, ButtonNewCheckin, Checkin, Index, Time} from './styles';
+import {
+  Container,
+  FlatListCheckin,
+  ButtonNewCheckin,
+  Checkin,
+  Index,
+  Time,
+} from './styles';
 
 export default function Dashboard() {
   const [checkin, setCheckin] = useState([]);
@@ -37,7 +44,7 @@ export default function Dashboard() {
       <ButtonNewCheckin onPress={handleNewCheckin}>
         Novo check-in
       </ButtonNewCheckin>
-      <FlatList
+      <FlatListCheckin
         data={checkin}
         keyExtractor={item => item._id}
         showsVerticalScrollIndicator={false}

@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import {formatRelative, parseISO} from 'date-fns';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import pt from 'date-fns/locale/pt';
-import {FlatList} from 'react-native';
 import {useSelector} from 'react-redux';
 import {withNavigationFocus} from 'react-navigation';
 
@@ -17,6 +16,7 @@ import {
   HelpQuestinText,
   HelpDate,
   HelpQuestion,
+  FlatListHelp,
 } from './styles';
 
 function HelpOrder({navigation, isFocused}) {
@@ -50,7 +50,7 @@ function HelpOrder({navigation, isFocused}) {
       <ButtonNewHelpOrder onPress={handleNewHelp}>
         Novo pedido de auxílio
       </ButtonNewHelpOrder>
-      <FlatList
+      <FlatListHelp
         data={help}
         keyExtractor={item => String(item.id)}
         showsVerticalScrollIndicator={false}

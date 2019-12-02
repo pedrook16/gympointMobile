@@ -6,10 +6,13 @@ export const Container = styled.View`
   background: #f5f5f5;
   padding: 30px 30px;
 `;
+export const FlatListCheckin = styled.FlatList`
+  margin-top: 20px;
+`;
 export const ButtonNewCheckin = styled(Button)``;
 
 export const Checkin = styled.View`
-  margin-top: 20px;
+  margin-bottom: 20px;
   padding: 0 20px;
   height: 46px;
   border: 1px solid #ddd;
@@ -20,11 +23,11 @@ export const Checkin = styled.View`
   background: #fff;
 `;
 export const Index = styled.Text`
-font-size: 16px;
+  font-size: 16px;
   font-weight: bold;
   color: #333;
 `;
 export const Time = styled.Text`
-font-size: 16px;
+  font-size: 16px;
   color: #999;
 `;

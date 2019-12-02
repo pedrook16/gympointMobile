@@ -7,7 +7,7 @@ import api from '~/services/api';
 
 import {Container, InputText, SubmitButton} from './styles';
 
-export default function NewHelpOrder() {
+export default function NewHelpOrder({navigation: navigate}) {
   const [question, setQuestion] = useState('');
   const studentId = useSelector(state => state.auth.id);
 
@@ -16,6 +16,7 @@ export default function NewHelpOrder() {
       question,
     });
     setQuestion('');
+    navigate.goBack();
   }
 
   return (
