@@ -1,8 +1,8 @@
 <h1 align="center">
-  <img alt="Gympoint" title="Gympoint" src=".github/logo.png" width="200px" />
+  <img alt="Gympoint" title="Gympoint" src="logo.png" width="200px" />
 </h1>
 <h3 align="center">
-  FrontEnd Gympoint
+  App Mobile Gympoint
 </h3>
 <blockquote align="center">Sistema para Academia</blockquote>
 <p align="center">
@@ -33,7 +33,7 @@ yarn start ou npm start
 
 ## Construido com
 
-- [ReactJs](https://pt-br.reactjs.org/)
+- [React Native](https://facebook.github.io/react-native/)
 - [Redux](https://redux.js.org/)
 
 ## Autor
