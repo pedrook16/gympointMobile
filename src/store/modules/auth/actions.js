@@ -1,7 +1,7 @@
-export function signInRequest(id) {
+export function signInRequest(studentId) {
   return {
     type: '@auth/SIGN_IN_REQUEST',
-    payload: {id},
+    payload: {studentId},
   };
 }
 

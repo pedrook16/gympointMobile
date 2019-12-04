@@ -26,8 +26,8 @@ export const Index = styled.Text`
   font-size: 16px;
   font-weight: bold;
   color: #333;
+  margin-right: 20px;
 `;
 export const Time = styled.Text`
-  font-size: 16px;
   color: #999;
 `;

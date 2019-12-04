@@ -20,4 +20,5 @@ export const Form = styled.View`
 export const FormInput = styled(Input)`
   margin-bottom: 20px;
 `;
+
 export const SubmitButton = styled(Button)``;
