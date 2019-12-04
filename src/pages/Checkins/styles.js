@@ -23,7 +23,7 @@ export const Checkin = styled.View`
   background: #fff;
 `;
 export const Index = styled.Text`
-  font-size: 16px;
+  font-size: 15px;
   font-weight: bold;
   color: #333;
   margin-right: 20px;
