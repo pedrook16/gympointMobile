@@ -1,10 +1,11 @@
 import React, {useEffect, useState, useCallback} from 'react';
 import {formatRelative, parseISO} from 'date-fns';
 import pt from 'date-fns/locale/pt';
-import {FlatList} from 'react-native';
 import {useSelector} from 'react-redux';
 
 import api from '~/services/api';
+
+import Empty from '~/components/Empty';
 
 import {
   Container,
@@ -44,17 +45,21 @@ export default function Dashboard() {
       <ButtonNewCheckin onPress={handleNewCheckin}>
         Novo check-in
       </ButtonNewCheckin>
-      <FlatListCheckin
-        data={checkin}
-        keyExtractor={item => item._id}
-        showsVerticalScrollIndicator={false}
-        renderItem={({item, index}) => (
-          <Checkin>
-            <Index>Check-in #{index + 1}</Index>
-            <Time>{item.formattedDate}</Time>
-          </Checkin>
-        )}
-      />
+      {checkin.length <= 0 ? (
+        <Empty>Sem check-ins realizados :(</Empty>
+      ) : (
+        <FlatListCheckin
+          data={checkin}
+          keyExtractor={item => item._id}
+          showsVerticalScrollIndicator={false}
+          renderItem={({item, index}) => (
+            <Checkin>
+              <Index>Check-in #{index + 1}</Index>
+              <Time>{item.formattedDate}</Time>
+            </Checkin>
+          )}
+        />
+      )}
     </Container>
   );
 }

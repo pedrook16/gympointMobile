@@ -7,6 +7,8 @@ import {withNavigationFocus} from 'react-navigation';
 
 import api from '~/services/api';
 
+import Empty from '~/components/Empty';
+
 import {
   Container,
   ButtonNewHelpOrder,
@@ -50,30 +52,35 @@ function HelpOrder({navigation, isFocused}) {
       <ButtonNewHelpOrder onPress={handleNewHelp}>
         Novo pedido de auxílio
       </ButtonNewHelpOrder>
-      <FlatListHelp
-        data={help}
-        keyExtractor={item => String(item.id)}
-        showsVerticalScrollIndicator={false}
-        renderItem={({item}) => (
-          <HelpList
-            onPress={() => navigation.navigate('DetailHelpOrder', {item})}>
-            <HelpHeader>
-              <HelpResp>
-                <Icon
-                  name="check-circle"
-                  size={20}
-                  color={item.answer === null ? '#999' : '#42cb59'}
-                />
-                <HelpQuestinText respond={item.answer}>
-                  {item.answer === null ? 'Sem resposta' : 'Respondido'}
-                </HelpQuestinText>
-              </HelpResp>
-              <HelpDate>{item.formattedDate}</HelpDate>
-            </HelpHeader>
-            <HelpQuestion>{item.question}</HelpQuestion>
-          </HelpList>
-        )}
-      />
+
+      {help.length <= 0 ? (
+        <Empty>Sem pedidos de auxílio :(</Empty>
+      ) : (
+        <FlatListHelp
+          data={help}
+          keyExtractor={item => String(item.id)}
+          showsVerticalScrollIndicator={false}
+          renderItem={({item}) => (
+            <HelpList
+              onPress={() => navigation.navigate('DetailHelpOrder', {item})}>
+              <HelpHeader>
+                <HelpResp>
+                  <Icon
+                    name="check-circle"
+                    size={20}
+                    color={item.answer === null ? '#999' : '#42cb59'}
+                  />
+                  <HelpQuestinText respond={item.answer}>
+                    {item.answer === null ? 'Sem resposta' : 'Respondido'}
+                  </HelpQuestinText>
+                </HelpResp>
+                <HelpDate>{item.formattedDate}</HelpDate>
+              </HelpHeader>
+              <HelpQuestion>{item.question}</HelpQuestion>
+            </HelpList>
+          )}
+        />
+      )}
     </Container>
   );
 }
